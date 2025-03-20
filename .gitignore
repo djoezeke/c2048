@@ -1,0 +1,17 @@
+### VSCODE ###
+.vscode/
+.vscode/**
+
+### PYTHON ###
+**/__pycache__
+_pycache__/*
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Environments
+.env
+.venv
+env/
+venv/
