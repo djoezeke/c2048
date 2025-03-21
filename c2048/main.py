@@ -46,6 +46,22 @@ class Game:
         self.spawn_new = True
         self.game_over = False
 
+    def move_up(self):
+        """draw"""
+        self.direct = "UP"
+
+    def move_down(self):
+        """draw"""
+        self.direct = "DOWN"
+
+    def move_left(self):
+        """draw"""
+        self.direct = "LEFT"
+
+    def move_right(self):
+        """draw"""
+        self.direct = "RIGHT"
+
     def draw(self, screen: pygame.Surface):
         """draw"""
 
@@ -231,13 +247,13 @@ def c2048(args: list):
                         game.reset()
 
                 if event.key == pygame.K_LEFT and game.game_over is False:
-                    game.direct = "LEFT"
+                    game.move_left()
                 if event.key == pygame.K_RIGHT and game.game_over is False:
-                    game.direct = "RIGHT"
+                    game.move_right()
                 if event.key == pygame.K_DOWN and game.game_over is False:
-                    game.direct = "DOWN"
+                    game.move_down()
                 if event.key == pygame.K_UP and game.game_over is False:
-                    game.direct = "UP"
+                    game.move_up()
 
     pygame.quit()
     sys.exit()
