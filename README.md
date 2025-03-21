@@ -17,7 +17,7 @@ This Clasical 2048 Game is developed using Python and The Pygame Library, offeri
 
 ## 🎮 Gameplay
 
-The objective is to get 2048, which is acchieved by merging .
+The objective is to get 2048, which is achieved by merging .
 The game ends when the board is filled.
 
 ## 🕹️ Controls
