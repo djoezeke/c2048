@@ -1,11 +1,32 @@
 # Clasical 2048 Game
 
-## 🎮 Gameplay
+This Clasical 2048 Game is developed using Python and The Pygame Library, offering a classic gaming experience with modern coding practices. The game features the traditional 2048 gameplay, with additional features such as pause, score tracking, level progression, collision detection, and background music to enhance the playing experience.
+
+## Screenshots
+
+![Screenshot](https://github.com/djoezeke/c2048)
 
 ## 🚀 Features
 
-- Simple and intuitive controls
-- Score tracking to keep track of your progress
+- **Game Controls:** Simple and intuitive controls.
+- **Levels:** The game speed increases as you progress, offering a challenging experience.
+- **Score System:** Score tracking to keep track of your progress.
+- **Pause/Resume:** Players can pause the game at any moment and resume where they left off.
+- **Collision Detection:** Ensures a realistic gameplay experience.
+- **Music and Sound Effects:** Enhances gameplay with engaging audio.
+
+## 🎮 Gameplay
+
+The objective is to get 2048, which is acchieved by merging .
+The game ends when the board is filled.
+
+## 🕹️ Controls
+
+- **A** / **Left Arrow** : Move Left
+- **D** / **Right Arrow** : Move Right
+- **S** / **Down Arrow** : Move Down
+- **W** / **Up Arrow** : Move Up
+- **Space** : Pause/Resume Game
 
 ## 🛠️ Installation
 
@@ -15,14 +36,17 @@
 git clone https://github.com/djoezeke/c2048.git
 ```
 
-2. Run the game:
+2. Navigate to the cloned directory:
 
 ```bash
-cd C2048
-python -m c2048
+   cd c2048
 ```
 
-## 🕹️ Controls
+3. Run the game:
+
+```bash
+python -m c2048
+```
 
 ## 📝 License
 
