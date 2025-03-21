@@ -3,7 +3,7 @@
 import sys
 import pygame
 
-from c2048 import settings
+from c2048.game import settings
 
 from c2048.game.colors import Colors
 from c2048.game.board import Board
