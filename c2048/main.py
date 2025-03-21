@@ -14,12 +14,13 @@ class Game:
 
     def __init__(self):
         self.board = Board()
-        self.game_over = False
         self.score = 0
         self.high_score = 0
         self.spawn_new = True
         self.count = 0
         self.direct = ""
+        self.paused = False
+        self.game_over = False
 
     def update_score(self):
         """update_score"""
@@ -44,26 +45,32 @@ class Game:
         self.count = 0
         self.direct = ""
         self.spawn_new = True
+        self.paused = False
         self.game_over = False
 
     def move_up(self):
         """draw"""
-        self.direct = "UP"
+        if self.paused is False and self.game_over is False:
+            self.direct = "UP"
 
     def move_down(self):
         """draw"""
-        self.direct = "DOWN"
+        if self.paused is False and self.game_over is False:
+            self.direct = "DOWN"
 
     def move_left(self):
         """draw"""
-        self.direct = "LEFT"
+        if self.paused is False and self.game_over is False:
+            self.direct = "LEFT"
 
     def move_right(self):
         """draw"""
-        self.direct = "RIGHT"
+        if self.paused is False and self.game_over is False:
+            self.direct = "RIGHT"
 
     def draw(self, screen: pygame.Surface):
         """draw"""
+        screen.fill("gray")
 
         self.board.draw_board(screen)
         self.board.draw_pieces(screen)
@@ -74,6 +81,12 @@ class Game:
 
         screen.blit(score_text, (10, 410))
         screen.blit(high_score_text, (10, 450))
+
+        if self.game_over is True:
+            self.update_score()
+            self.draw_over(screen)
+
+        game.direction()
 
     def direction(self):
         """direction"""
@@ -226,34 +239,30 @@ def c2048(args: list):
     # main game loop
     while run:
         config.clock.tick(config.FPS)
-        config.WINDOW.fill("gray")
+
         game.draw(config.WINDOW)
-
-        if game.game_over is True:
-            game.update_score()
-            game.draw_over(config.WINDOW)
-
-        pygame.display.update()
-        game.direction()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
                 break
+
             if event.type == pygame.KEYDOWN:
 
                 if game.game_over is True:
                     if event.key == pygame.K_ESCAPE:
                         game.reset()
 
-                if event.key == pygame.K_LEFT and game.game_over is False:
+                if event.key == pygame.K_LEFT:
                     game.move_left()
-                if event.key == pygame.K_RIGHT and game.game_over is False:
+                if event.key == pygame.K_RIGHT:
                     game.move_right()
-                if event.key == pygame.K_DOWN and game.game_over is False:
+                if event.key == pygame.K_DOWN:
                     game.move_down()
-                if event.key == pygame.K_UP and game.game_over is False:
+                if event.key == pygame.K_UP:
                     game.move_up()
+
+        pygame.display.update()
 
     pygame.quit()
     sys.exit()
