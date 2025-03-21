@@ -27,6 +27,7 @@ The game ends when the board is filled.
 - **S** / **Down Arrow** : Move Down
 - **W** / **Up Arrow** : Move Up
 - **Space** : Pause/Resume Game
+- **Enter** : Restart Game
 
 ## 🛠️ Installation
 
