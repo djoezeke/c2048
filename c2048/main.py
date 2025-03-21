@@ -70,6 +70,8 @@ class Game:
 
     def draw(self, screen: pygame.Surface):
         """draw"""
+
+        paused_suface = config.font.render("GAME PAUSED", True, Colors.white)
         screen.fill("gray")
 
         self.board.draw_board(screen)
@@ -85,6 +87,11 @@ class Game:
         if self.game_over is True:
             self.update_score()
             self.draw_over(screen)
+
+        if self.paused:
+            screen.blit(
+                paused_suface, ((config.WIDTH / 2) - 100, config.HEIGHT / 2, 50, 50)
+            )
 
         game.direction()
 
@@ -248,6 +255,17 @@ def c2048(args: list):
                 break
 
             if event.type == pygame.KEYDOWN:
+
+                if game.game_over is True:
+                    if event.key == pygame.K_RETURN:
+                        game.reset()
+
+                if event.key == pygame.K_SPACE and game.game_over is False:
+
+                    if game.paused:
+                        game.paused = False
+                    else:
+                        game.paused = True
 
                 if game.game_over is True:
                     if event.key == pygame.K_ESCAPE:
