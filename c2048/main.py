@@ -3,7 +3,7 @@
 import sys
 import pygame
 
-from c2048.game import settings
+from c2048.game import config
 
 from c2048.game.colors import Colors
 from c2048.game.board import Board
@@ -30,8 +30,8 @@ class Game:
         """draw_over"""
 
         pygame.draw.rect(screen, "black", [40, 100, 350, 100], 0, 10)
-        over_text1 = settings.font.render("GAME OVER!", True, Colors.white)
-        over_text2 = settings.font.render("Press Escape to Restart", True, Colors.white)
+        over_text1 = config.font.render("GAME OVER!", True, Colors.white)
+        over_text2 = config.font.render("Press Escape to Restart", True, Colors.white)
 
         screen.blit(over_text1, (120, 100))
         screen.blit(over_text2, (50, 140))
@@ -51,8 +51,8 @@ class Game:
 
         self.board.draw_board(screen)
         self.board.draw_pieces(screen)
-        score_text = settings.font.render(f"Score: {self.score}", True, Colors.white)
-        high_score_text = settings.font.render(
+        score_text = config.font.render(f"Score: {self.score}", True, Colors.white)
+        high_score_text = config.font.render(
             f"High Score: {self.high_score}", True, Colors.white
         )
 
@@ -196,26 +196,26 @@ def c2048(args: list):
 
     pygame.display.set_caption("c2048")
 
-    settings.music.set_volume(settings.volume)
-    settings.music.play(loops=-1)
+    config.music.set_volume(config.volume)
+    config.music.play(loops=-1)
 
     if "--nosound" in args:
-        settings.music.set_volume(0)
-        settings.music.stop()
+        config.music.set_volume(0)
+        config.music.stop()
 
     run: bool = True
 
-    settings.clock = pygame.time.Clock()
+    config.clock = pygame.time.Clock()
 
     # main game loop
     while run:
-        settings.clock.tick(settings.FPS)
-        settings.WINDOW.fill("gray")
-        game.draw(settings.WINDOW)
+        config.clock.tick(config.FPS)
+        config.WINDOW.fill("gray")
+        game.draw(config.WINDOW)
 
         if game.game_over is True:
             game.update_score()
-            game.draw_over(settings.WINDOW)
+            game.draw_over(config.WINDOW)
 
         pygame.display.update()
         game.direction()
