@@ -4,7 +4,7 @@ This Clasical 2048 Game is developed using Python and The Pygame Library, offeri
 
 ## Screenshots
 
-![Screenshot](https://github.com/djoezeke/c2048)
+![Screenshot](c2048/assets/screenshot.png)
 
 ## 🚀 Features
 
