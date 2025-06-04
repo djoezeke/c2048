@@ -132,31 +132,29 @@ class Game:
                     merged[i - shift][j] = True
 
     def turn_down(self, merged):
-        """turn_up"""
-        # TODO : Fix
-
-        for i in range(3):
+        """turn_down"""
+        for i in range(4):
             for j in range(4):
                 shift = 0
-                for q in range(i + 1):
-                    if self.board.values[3 - q][j] == 0:
-                        shift += 1
-
+                if i > 0:
+                    for q in range(i):
+                        if self.board.values[3 - q][j] == 0:
+                            shift += 1
                 if shift > 0:
-                    self.board.values[2 - i + shift][j] = self.board.values[2 - i][j]
-                    self.board.values[2 - i][j] = 0
+                    self.board.values[3 - i - shift][j] = self.board.values[3 - i][j]
+                    self.board.values[3 - i][j] = 0
 
-                if 3 - i + shift <= 3:
+                if 4 - i + shift <= 3:
                     if (
-                        self.board.values[2 - i + shift][j]
-                        == self.board.values[3 - i + shift][j]
-                        and not merged[2 - i + shift][j]
-                        and not merged[3 - i + shift][j]
+                        self.board.values[4 - i + shift][j]
+                        == self.board.values[3 - i - shift][j]
+                        and not merged[3 - i - shift][j]
+                        and not merged[4 - i - shift][j]
                     ):
-                        self.board.values[3 - i + shift][j] *= 2
-                        self.score += self.board.values[3 - i + shift][j]
-                        self.board.values[2 - i + shift] = 0
-                        merged[3 - i + shift] = True
+                        self.board.values[4 - i - shift][j] *= 2
+                        self.score += self.board.values[4 - i - shift][j]
+                        self.board.values[3 - i - shift][j] = 0
+                        merged[4 - i - shift][j] = True
 
     def turn_right(self, merged):
         """turn_up"""
